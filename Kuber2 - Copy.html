@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nodes and Services in Kubernetes</title>
+    <style>
+      /* Inline CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      h2 {
+        color: #444;
+      }
+
+      p {
+        line-height: 1.6;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .section {
+        margin-bottom: 30px;
+      }
+
+      /* Add more CSS styles as needed */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Nodes and Services in Kubernetes</h1>
+    </header>
+
+    <div class="section">
+      <h2>Introduction to Kubernetes</h2>
+      <p>
+        Kubernetes is an open-source container orchestration platform that
+        automates the deployment, scaling, and management of containerized
+        applications. To understand Kubernetes fully, it's crucial to grasp the
+        concepts of nodes and services.
+      </p>
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSHoq6GvNgvxyepJ50WYLCzhl31ax2noS-pmQ&usqp=CAU" alt="Kubernetes Logo" height="20%" width="30%" />
+    </div>
+
+    <div class="section">
+      <h2>Kubernetes Nodes</h2>
+      <p>
+        Nodes are the worker machines in a Kubernetes cluster. They are
+        responsible for running containers and managing the runtime environment.
+        Each node typically consists of the following components:
+      </p>
+      <ul>
+        <li>Kubelet: Ensures containers are running in a Pod.</li>
+        <li>Kube Proxy: Maintains network rules on nodes.</li>
+        <li>
+          Container Runtime: Software responsible for running containers (e.g.,
+          Docker).
+        </li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Kubernetes Services</h2>
+      <p>
+        Services in Kubernetes provide network connectivity to a set of Pods.
+        They enable dynamic load balancing and service discovery within the
+        cluster. There are different types of services, including:
+      </p>
+      <ul>
+        <li>
+          ClusterIP: Exposes a service on an internal IP within the cluster.
+        </li>
+        <li>
+          NodePort: Exposes a service on a specific port on each node's IP.
+        </li>
+        <li>LoadBalancer: Provides a dedicated load balancer for a service.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Kubernetes Pods</h2>
+      <p>
+        Pods are the smallest deployable units in Kubernetes. They can contain
+        one or more containers that share the same network and storage
+        namespace. Pods are often used to group containers that need to work
+        together closely.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Kubernetes Ingress</h2>
+      <p>
+        Ingress in Kubernetes is an API object used to manage external access to
+        services within the cluster. It enables the configuration of rules for
+        routing HTTP and HTTPS traffic to different services based on hostnames
+        and paths.
+      </p>
+    </div>
+
+    <div class="section">
+      <h2>Kubernetes StatefulSets</h2>
+      <p>
+        StatefulSets are used to manage stateful applications in Kubernetes.
+        Unlike regular Pods, StatefulSets provide stable network identities and
+        stable storage. They are commonly used for databases and other stateful
+        workloads.
+      </p>
+    </div>
+
+    <!-- Add more sections and content as needed -->
+
+    <footer>
+      <p>
+        Explore Kubernetes documentation for more in-depth information:
+        <a href="https://kubernetes.io/docs/" target="_blank"
+          >Kubernetes Docs</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

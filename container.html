@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Containerization into Docker</title>
+    <style>
+      /* Inline CSS styles */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+        padding: 0;
+        background-color: #f2f2f2;
+      }
+
+      h1 {
+        color: #333;
+      }
+
+      h2 {
+        color: #444;
+      }
+
+      p {
+        line-height: 1.6;
+        margin-bottom: 20px;
+      }
+
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      .section {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 30px;
+      }
+      pre{
+        background-color: #ccc;
+        padding: 1rem;
+        margin: 1rem 3rem;
+        font-size: 16px;
+      }
+
+      /* Add more CSS styles as needed */
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Containerization into Docker</h1>
+    </header>
+
+    <div class="section">
+      <h2>Introduction to Containerization</h2>
+      <p>
+        Containerization is OS-based virtualization that creates multiple
+        virtual units in the userspace, known as Containers. Containers share
+        the same host kernel but are isolated from each other through private
+        namespaces and resource control mechanisms at the OS level.
+        Container-based Virtualization provides a different level of abstraction
+        in terms of virtualization and isolation when compared with hypervisors.
+        Hypervisors use a lot of hardware which results in overhead in terms of
+        virtualizing hardware and virtual device drivers. A full operating
+        system (e.g -Linux, Windows) runs on top of this virtualized hardware in
+        each virtual machine instance. But in contrast, containers implement
+        isolation of processes at the operating system level, thus avoiding such
+        overhead. These containers run on top of the same shared operating
+        system kernel of the underlying host machine and one or more processes
+        can be run within each container. In containers you don’t have to
+        pre-allocate any RAM, it is allocated dynamically during the creation of
+        containers while in VMs you need to first pre-allocate the memory and
+        then create the virtual machine. Containerization has better resource
+        utilization compared to VMs and a short boot-up process. It is the next
+        evolution in virtualization. Containers can run virtually anywhere,
+        greatly easy development and deployment: on Linux, Windows, and Mac
+        operating systems; on virtual machines or bare metal, on a developer’s
+        machine or in data centers on-premises; and of course, in the public
+        cloud. Containers virtualize CPU, memory, storage, and network resources
+        at the OS level, providing developers with a sandboxed view of the OS
+        logically isolated from other applications. Docker is the most popular
+        open-source container format available and is supported on Google Cloud
+        Platform and by Google Kubernetes Engine.
+      </p>
+      <img
+        src="https://media.geeksforgeeks.org/wp-content/uploads/20190915163503/docker_architecture-1024x577.png" width="40%" height="30%"
+        alt="Containerization Illustration"
+      />
+    </div>
+
+    <div class="section">
+      <h2>Why Use Docker?</h2>
+      <p>
+        Docker is the containerization platform that is used to package your
+        application and all its dependencies together in the form of containers
+        to make sure that your application works seamlessly in any environment
+        which can be developed or tested or in production. Docker is a tool
+        designed to make it easier to create, deploy, and run applications by
+        using containers. Docker is the world’s leading software container
+        platform. It was launched in 2013 by a company called Dotcloud, Inc
+        which was later renamed Docker, Inc. It is written in the Go language.
+        It has been just six years since Docker was launched yet communities
+        have already shifted to it from VMs. Docker is designed to benefit both
+        developers and system administrators making it a part of many DevOps
+        toolchains. Developers can write code without worrying about the testing
+        and production environment. Sysadmins need not worry about
+        infrastructure as Docker can easily scale up and scale down the number
+        of systems. Docker comes into play at the deployment stage of the
+        software development cycle.
+      </p>
+    </div>
+
+    <div class="section">
+        <h2>Getting Started with Docker</h2>
+        <img src="https://cs-geonode.readthedocs.io/en/2.8_a/_images/docker.png" alt="Docker Installation" width="40%" height="30%"/>
+      <p>
+        To start using Docker, you'll need to install Docker on your machine.
+        Once installed, you can use Docker commands to build, run, and manage
+        containers.
+      </p>
+      
+    </div>
+    <div class="section">
+      <h2>Docker architecture</h2>
+      <img src="https://www.interviewbit.com/blog/wp-content/uploads/2022/06/Dockers-Workflow-1024x627.png " alt="Docker architecture" height="30%" width="40%"/>
+      <p>
+        Docker architecture consists of Docker client, Docker Daemon running on
+        Docker Host, and Docker Hub repository. Docker has client-server
+        architecture in which the client communicates with the Docker Daemon
+        running on the Docker Host using a combination of REST APIs, Socket IO,
+        and TCP. If we have to build the Docker image, then we use the client to
+        execute the build command to Docker Daemon then Docker Daemon builds an
+        image based on given inputs and saves it into the Docker registry. If
+        you don’t want to create an image then just execute the pull command
+        from the client and then Docker Daemon will pull the image from the
+        Docker Hub finally if we want to run the image then execute the run
+        command from the client which will create the container.
+      </p>
+      
+    </div>
+    <div class="section">
+      <h2>Docker networks</h2>
+      <img src="https://www.edureka.co/blog/wp-content/uploads/2018/07/Architecture-of-Container-Networking-Model@2x.png" alt="Docker networks"  height="30% " width="40%"/>
+      <p>
+        When we create and run a container, Docker by itself assigns an IP
+        address to it, by default. Most of the time, it is required to create
+        and deploy Docker networks as per our needs. So, Docker let us design
+        the network as per our requirements. There are three types of Docker
+        networks- default networks, user-defined networks, and overlay networks.
+        To get a list of all the default networks that Docker creates, we run
+        the command shown below – There are three types of networks in Docker –
+        Bridged network: When a new Docker container is created without the
+        –network argument, Docker by default connects the container with the
+        bridge network. In bridged networks, all the containers in a single host
+        can connect through their IP addresses. A Bridge network is created when
+        the span of Docker hosts is one i.e. when all containers run on a single
+        host. We need an overlay network to create a network that has a span of
+        more than one Docker host. Host network: When a new Docker container is
+        created with the –network=host argument it pushes the container into the
+        host network stack where the Docker daemon is running. All interfaces of
+        the host are accessible from the container which is assigned to the host
+        network. None network: When a new Docker container is created with the
+        –network=none argument it puts the Docker container in its network
+        stack. So, in this none network, no IP addresses are assigned to the
+        container, because of which they cannot communicate with each other. We
+        can assign any one of the networks to the Docker containers. The
+        –network option of the ‘docker run’ command is used to assign a specific
+        network to the container.
+
+        <pre><code>$docker run --network ="network name"</code></pre>
+        To get detailed information about a particular network we use the
+        command-
+
+        <pre><code>$docker network inspect "network name"</code></pre>
+      </p>
+      
+    </div>
+
+    <div class="section">
+      <h2>Creating Your First Docker Container</h2>
+      <p>
+        Let's create a simple Docker container. Create a file named
+        <code>Dockerfile</code> with the following content:
+      </p>
+      <pre>
+            <code>
+# Use an official Python runtime as a parent image
+FROM python:3.7-slim
+
+# Set the working directory to /app
+WORKDIR /app
+
+# Copy the current directory contents into the container at /app
+COPY . /app
+
+# Install any needed packages specified in requirements.txt
+RUN pip install --trusted-host pypi.python.org -r requirements.txt
+
+# Make port 80 available to the world outside this container
+EXPOSE 80
+
+# Define environment variable
+ENV NAME World
+
+# Run app.py when the container launches
+CMD ["python", "app.py"]
+            </code>
+        </pre>
+    </div>
+    <div class="section">
+      <h2>Components of Docker</h2>
+      <p>
+        The main components of Docker include – Docker clients and servers,
+        Docker images, Dockerfile, Docker Registries, and Docker containers.
+        These components are explained in detail in the below section.
+      </p>
+      <ul>
+        <li>
+          <b>Docker Clients and Servers</b>– Docker has a client-server
+          architecture. The Docker Daemon/Server consists of all containers. The
+          Docker Daemon/Server receives the request from the Docker client
+          through CLI or REST APIs and thus processes the request accordingly.
+          Docker client and Daemon can be present on the same host or different
+          host.
+        </li>
+        <li>
+          <b>Docker Images</b>– Docker images are used to build docker
+          containers by using a read-only template. The foundation of every
+          image is a base image eg. base images such as – ubuntu14.04 LTS, and
+          Fedora 20. Base images can also be created from scratch and then
+          required applications can be added to the base image by modifying it
+          thus this process of creating a new image is called “committing the
+          change”.
+        </li>
+        <li>
+          <b>Docker File</b>– Dockerfile is a text file that contains a series
+          of instructions on how to build your Docker image. This image contains
+          all the project code and its dependencies. The same Docker image can
+          be used to spin ‘n’ number of containers each with modification to the
+          underlying image. The final image can be uploaded to Docker Hub and
+          shared among various collaborators for testing and deployment. The set
+          of commands that you need to use in your Docker File is FROM, CMD,
+          ENTRYPOINT, VOLUME, ENV, and many more.
+        </li>
+        <li>
+          <b>Docker Registries</b>– Docker Registry is a storage component for
+          Docker images. We can store the images in either public/private
+          repositories so that multiple users can collaborate in building the
+          application. Docker Hub is Docker’s cloud repository. Docker Hub is
+          called a public registry where everyone can pull available images and
+          push their images without creating an image from scratch.
+        </li>
+        <li>
+          <b>Docker Containers</b>– Docker Containers are runtime instances of
+          Docker images. Containers contain the whole kit required for an
+          application, so the application can be run in an isolated way. For
+          eg.- Suppose there is an image of Ubuntu OS with NGINX SERVER when
+          this image is run with the docker run command, then a container will
+          be created and NGINX SERVER will be running on Ubuntu OS.
+        </li>
+      </ul>
+    </div>
+
+    <!-- Add more sections and content as needed -->
+
+    <footer>
+      <p>
+        Containerization with Docker is a powerful way to streamline your
+        development and deployment workflows. Explore Docker's official
+        documentation for more details.
+      </p>
+    </footer>
+  </body>
+</html>
